@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import LoginComponet from './components/LoginComponet'
+import { Navbar,Nav } from 'react-bootstrap'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Navbar bg="dark" variant="dark">
+      <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+      <Nav className="mr-auto">
+        <Nav.Link href="#home">Home</Nav.Link>
+        <Nav.Link href="#features">Features</Nav.Link>
+        <Nav.Link href="#pricing">Pricing</Nav.Link>
+      </Nav>
+    </Navbar>
+    <br></br>
+    <LoginComponet></LoginComponet>
   </React.StrictMode>,
   document.getElementById('root')
 );
