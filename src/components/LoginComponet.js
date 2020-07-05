@@ -1,5 +1,8 @@
 import React from 'react';
-import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Card, ProgressBar } from 'react-bootstrap';
+import { LoginService } from '../service/LoginService';
+import UserForm from './UserForm';
+import UsersGrids from "./UsersGrid";
 
 export default class LoginComponet extends React.Component {
 
@@ -7,29 +10,33 @@ export default class LoginComponet extends React.Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            pass: '',
+            tieme: 0
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.loginservice = new LoginService()
     }
-    handleChange(event) {
+    handleChange = event => {
         this.setState(
             {
                 [event.target.name]: event.target.value
             });
     }
 
-    handleSubmit(event) {
-        console.log(this.state);
+    handleSubmit = event => {
         event.preventDefault();
+        const user = this.state
+        for (let i = 0; i <= 100; i++) {
+                this.setState({ tieme: i })
+        }
+        this.loginservice.loginAccess(user);
     }
 
     render() {
         return (
             <Container>
                 <Row>
-                    <Col></Col>
-                    <Col xs={6}>
+                    <Col xs={5}><UsersGrids /></Col>
+                    <Col>
                         <Card>
                             <Card.Body>
                                 <Form onSubmit={this.handleSubmit}>
@@ -44,14 +51,11 @@ export default class LoginComponet extends React.Component {
                                     <Form.Group controlId="formBasicPassword">
                                         <Form.Label>Password</Form.Label>
                                         <Form.Control
-                                            value={this.state.password}
+                                            value={this.state.pass}
                                             type="password"
-                                            name="password"
+                                            name="pass"
                                             onChange={this.handleChange}
                                             placeholder="Password" />
-                                    </Form.Group>
-                                    <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Check type="checkbox" label="Check me out" />
                                     </Form.Group>
                                     <Button variant="primary" type="submit">
                                         Submit
@@ -60,8 +64,11 @@ export default class LoginComponet extends React.Component {
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col></Col>
+                    <Col>
+                        <UserForm />
+                    </Col>
                 </Row>
+                <ProgressBar animated now={this.state.tieme} label={`${this.state.tieme}%`} />
             </Container>
         );
     }

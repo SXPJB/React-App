@@ -2,21 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import LoginComponet from './components/LoginComponet'
-import { Navbar,Nav } from 'react-bootstrap'
+import { Navbar } from 'react-bootstrap'
 import * as serviceWorker from './serviceWorker';
+import logo from './logo.svg';
 
 ReactDOM.render(
   <React.StrictMode>
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-      <Nav className="mr-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
-      </Nav>
+      <Navbar.Brand href="/">
+        <img
+         alt="logo" 
+          src={logo}
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />
+      React-Spring-Mysql
+    </Navbar.Brand>
     </Navbar>
     <br></br>
-    <LoginComponet></LoginComponet>
+    <LoginComponet />
   </React.StrictMode>,
   document.getElementById('root')
 );
