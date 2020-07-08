@@ -12,11 +12,13 @@ export default class UsersGrids extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/acceso/getAllUsers')
-            .then(res => {
-                const users = res.data;
-                this.setState({ users });
-            });
+       this.getAllUsers();
+    }
+
+    getAllUsers=async()=>{
+        let data=await axios.get('http://localhost:8080/acceso/getAllUsers')
+        .then(({data})=>data);
+        this.setState({users:data})
     }
 
     render() {

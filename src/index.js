@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import LoginComponet from './components/LoginComponet'
-import { Navbar } from 'react-bootstrap'
+import LoginComponet from './components/LoginComponet';
+import UserForm from './components/UserForm';
+import UsersGrids from "./components/UsersGrid";
+import { Navbar, Container, Row, Col } from 'react-bootstrap';
 import * as serviceWorker from './serviceWorker';
 import logo from './logo.svg';
 
@@ -11,7 +13,7 @@ ReactDOM.render(
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand href="/">
         <img
-         alt="logo" 
+          alt="logo"
           src={logo}
           width="30"
           height="30"
@@ -21,7 +23,19 @@ ReactDOM.render(
     </Navbar.Brand>
     </Navbar>
     <br></br>
-    <LoginComponet />
+    <Container fluid >
+      <Row>
+        <Col xs={4}>
+          <UsersGrids />
+        </Col>
+        <Col>
+          <LoginComponet />
+        </Col>
+        <Col>
+          <UserForm />
+        </Col>
+      </Row>
+    </Container>
   </React.StrictMode>,
   document.getElementById('root')
 );

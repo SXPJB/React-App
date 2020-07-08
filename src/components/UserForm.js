@@ -4,6 +4,7 @@ import { LoginService } from '../service/LoginService'
 
 export default class UserForm extends React.Component {
 
+
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +27,6 @@ export default class UserForm extends React.Component {
         event.preventDefault();
         const user = this.state
         this.loginservice.insertUser(user);
-        console.log(this.state)
     }
 
     render() {
